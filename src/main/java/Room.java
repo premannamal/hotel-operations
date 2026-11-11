@@ -5,6 +5,8 @@ int numberOfBeds;
 float price;
 String status = "Available";
 int roomNumber;
+boolean isDirty;
+boolean isOccupied;
 
 public Room(int numberOfBeds, float price)
 {
@@ -30,6 +32,13 @@ public Room(int numberOfBeds, float price)
 
     public boolean isDirty() {
         return ("Dirty".equalsIgnoreCase(this.status));
+    }
+
+    public void checkIn() {
+        if (isAvailable()) {
+            this.isOccupied = true;
+            this.isDirty = true;
+        }
     }
 
  public void setStatus(String status) {
