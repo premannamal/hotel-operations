@@ -41,6 +41,16 @@ public Room(int numberOfBeds, float price)
         }
     }
 
+    public void checkOut() {
+        this.isOccupied = false;
+    }
+
+    public void cleanRoom() {
+        if (!isOccupied) {
+            this.isDirty = false;
+        }
+    }
+
  public void setStatus(String status) {
     this.status = status;
  }
@@ -58,6 +68,11 @@ public Room(int numberOfBeds, float price)
         System.out.println("Is Room Number 301 Occupied? = " + R301.isOccupied());
         System.out.println("Is Room Number 101 Dirty? = " + R101.isDirty());
         System.out.println("Is Room Number 201 Available? = " + R201.isAvailable());
-
+        R301.checkIn();
+        R301.checkOut();
+        System.out.println("After checkout, is Room 301 Occupied? = " + R301.isOccupied()); // false
+        System.out.println("After checkout, is Room 301 Available? = " + R301.isAvailable()); // false (still dirty)
+        R301.cleanRoom();
+        System.out.println("After cleaning, is Room 301 Available? = " + R201.isAvailable());
     }
 }
